@@ -1,3 +1,5 @@
+package map;
+
 public class Elefantes {
     private String nombre;
     private int peso;

@@ -1,14 +1,19 @@
+package map;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static map.ServicioLectura.*;
+
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Ejercicio 1");
-        ListaElefantes elefantesCaso1 = ServicioLectura.lecturaFicheroJSONObjeto("caso1.json");
-        ListaElefantes elefantesCaso2 = ServicioLectura.lecturaFicheroJSONObjeto("caso2.json");
-        ListaElefantes elefantesCaso3 = ServicioLectura.lecturaFicheroJSONObjeto("caso3.json");
+        ListaElefantes elefantesCaso1 = lecturaFicheroJSONObjeto("caso1.json");
+        ListaElefantes elefantesCaso2 = lecturaFicheroJSONObjeto("caso2.json");
+        ListaElefantes elefantesCaso3 = lecturaFicheroJSONObjeto("caso3.json");
 
         System.out.println("Caso1");
         System.out.println(elefantesCaso1);
@@ -63,15 +68,33 @@ public class Test {
         System.out.println("------------------------------------------------");
 
         System.out.println("Ejercicio 4");
+        System.out.println("Caso1");
         Map<String, Integer> elefantesMap1 = mapElefantes(elefantesCaso1.getElefantes());
         System.out.println(elefantesMap1);
         System.out.println("------------------------------------------------");
+        System.out.println("Caso2");
         Map<String, Integer> elefantesMap2 = mapElefantes(elefantesCaso2.getElefantes());
         System.out.println(elefantesMap2);
         System.out.println("------------------------------------------------");
+        System.out.println("Caso3");
         Map<String, Integer> elefantesMap3 = mapElefantes(elefantesCaso3.getElefantes());
         System.out.println(elefantesMap3);
         System.out.println("------------------------------------------------");
+
+        System.out.println("Ejercicio 5");
+        // CASO 1
+        Map<String, Integer> elefantesTSV1 = mapElefantes(subirTela1);
+        generarTSV(elefantesTSV1, "elefantesCaso1.tsv");
+       // CASO 2
+        Map<String, Integer> elefantesTSV2 = mapElefantes(subirTela2);
+        generarTSV(elefantesTSV2, "elefantesCaso2.tsv");
+        // CASO 3
+        Map<String, Integer> elefantesTSV3 = mapElefantes(subirTela3);
+        generarTSV(elefantesTSV3, "elefantesCaso3.tsv");
+        System.out.println("------------------------------------------------");
+
+        System.out.println("Ejercicio 6");
+        generarJSONElefantes();
     }
 
     public static List <Elefantes> listaCeroCien (List <Elefantes> listaElefantes){
